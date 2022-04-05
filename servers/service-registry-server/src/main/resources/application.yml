@@ -54,30 +54,3 @@ eureka:
       registerWithEureka: true
       serviceUrl:
          defaultZone: http://eureka2.kickscar.me:${server.port}/eureka
-
-
----
-#
-# eureka2 configuration: peer awareness
-#
-spring:
-   application:
-      name: service-registry-server02(eureka)
-   config:
-      activate:
-         on-profile: eureka2
-
-server:
-   port: 8762
-   
-eureka:
-   instance:
-      hostname: eureka2.kickscar.me
-   server:
-      enableSelfPreservation: true
-   client:
-      fetchRegistry: true
-      registerWithEureka: true
-      serviceUrl:
-         defaultZone: http://eureka1.kickscar.me:${server.port}/eureka
-         

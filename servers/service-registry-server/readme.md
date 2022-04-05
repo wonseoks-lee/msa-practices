@@ -16,7 +16,7 @@
 
 ```yml
 server:
-   port: 7777
+   port: 3751
 ```
 
 
