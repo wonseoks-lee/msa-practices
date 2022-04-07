@@ -1,30 +1,20 @@
-#
-# active spring boot profile
-#
 spring:
+   application: 
+      name: emaillist
    profiles:
       active: development
-
-
----
-#
-# common configuration
-#
-spring:
    mvc:
       static-path-pattern: /assets/**
       throw-exception-if-no-handler-found: true
    web:
       resources:
-         static-locations: classpath:/static/
+         static-locations: classpath:/assets/
    thymeleaf:
       prefix : classpath:templates/
       check-template-location: true
       mode: HTML
       suffix : .html
       cache : false
-
-# Eureka
 eureka:
    client:
       fetchRegistry: true
@@ -70,3 +60,23 @@ server:
       encoding:
          charset: UTF-8
          enabled: true
+         
+logging:
+   pattern:
+      file: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n"
+   logback:
+      rollingpolicy:
+         file-name-pattern: "logs/${spring.application.name}.%d{yyyy-MM-dd}.%i.log.zip"
+         max-file-size: 10MB
+         max-history: 10
+   file:
+      name: logs/${spring.application.name}.log
+   level:
+      root: WARN
+      me:
+         kickscar:
+            emaillist:
+            msa:
+               service:
+                  emaillist:
+                     exception: ERROR
