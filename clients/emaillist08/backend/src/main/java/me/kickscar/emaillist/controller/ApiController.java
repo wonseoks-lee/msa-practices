@@ -3,7 +3,6 @@ package me.kickscar.emaillist.controller;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +20,10 @@ import me.kickscar.emaillist.vo.EmaillistVo;
 @RestController
 public class ApiController {
 	
+	// GW 사용
+	// @LoadBalanced
+	//
 	@Autowired
-	@LoadBalanced
 	private RestTemplate restTemplate;
 	
 	@GetMapping("/api")
@@ -30,7 +31,10 @@ public class ApiController {
 		
 		log.info("Request[GET /api]");
 		
-		EmaillistVo[] result = restTemplate.getForObject("http://service-emaillist/api?kw="+keyword, EmaillistVo[].class);
+		// GW 사용
+		// EmaillistVo[] result = restTemplate.getForObject("http://service-emaillist/api?kw="+keyword, EmaillistVo[].class);
+		//
+		EmaillistVo[] result = restTemplate.getForObject("http://localhost:5555/emaillist/api?kw="+keyword, EmaillistVo[].class);
 		
 		return ResponseEntity
 				.status(HttpStatus.OK)
@@ -39,7 +43,10 @@ public class ApiController {
 	
 	@PostMapping("/api")
 	public ResponseEntity<JsonResult> create(@RequestBody EmaillistVo vo) {
-		EmaillistVo result = restTemplate.postForObject("http://service-emaillist/api", vo, EmaillistVo.class);
+		// GW 사용
+		// EmaillistVo result = restTemplate.postForObject("http://service-emaillist/api", vo, EmaillistVo.class);
+		// 
+		EmaillistVo result = restTemplate.postForObject("http://localhost:5555/emaillist/api", vo, EmaillistVo.class);
 		
 		return ResponseEntity
 				.status(HttpStatus.OK)

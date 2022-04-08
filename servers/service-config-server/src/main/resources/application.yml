@@ -25,7 +25,7 @@ spring:
          server:
             encrypt.enabled: true
             git:
-               uri: https://github.com/kickscar/msa-practices-config-repo
+               uri: https://github.com/wonseoks-lee/msa-practices-config-repo
                searchPaths: service-emaillist
 logging:
    pattern:
@@ -54,7 +54,7 @@ spring:
        server:
           encrypt.enabled: true
           native:
-              searchLocations: file:///Users/kickscar/DoWork/STS-Workspace/msa-practices-config-repo/service-emaillist
+              searchLocations: file:///Users/wonseok/Desktop/sts-workspace/msa-practices-config-repo/service-emaillist
 logging:
    pattern:
       console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n"

@@ -15,12 +15,13 @@ spring:
       mode: HTML
       suffix : .html
       cache : false
-eureka:
-   client:
-      fetchRegistry: true
-      registerWithEureka: false
-      serviceUrl:
-         defaultZone: http://localhost:8761/eureka
+#GW 사용 
+#eureka:
+#   client:
+#      fetchRegistry: true
+#      registerWithEureka: false
+#      serviceUrl:
+#         defaultZone: http://localhost:8761/eureka
          
 
 ---
